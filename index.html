@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-i18n="meta.title">Винные и гастро туры • Гостевой дом у моря</title>
+  <meta name="description" content="Винные туры, гастро туры, гостевой дом, пешие и морские прогулки, дикие пляжи. Забронируйте незабываемый отдых у моря." />
+  <meta name="theme-color" content="#0f172a" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Винные и гастро туры • Гостевой дом у моря" />
+  <meta property="og:description" content="Винные туры, гастро туры, гостевой дом, пешие и морские прогулки, дикие пляжи." />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?q=80&w=1200&auto=format&fit=crop" />
+  <meta property="og:url" content="https://example.com" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Винные и гастро туры • Гостевой дом у моря" />
+  <meta name="twitter:description" content="Винные туры, гастро туры, гостевой дом, пешие и морские прогулки, дикие пляжи." />
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?q=80&w=1200&auto=format&fit=crop" />
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256' viewBox='0 0 256 256'%3E%3Ccircle cx='128' cy='128' r='120' fill='%230f172a'/%3E%3Cpath d='M75 150c30 30 76 30 106 0' stroke='%23ffffff' stroke-width='16' fill='none' stroke-linecap='round'/%3E%3Ccircle cx='96' cy='104' r='10' fill='%23ffffff'/%3E%3Ccircle cx='160' cy='104' r='10' fill='%23ffffff'/%3E%3C/svg%3E" />
+
+  <style>
+    /* --------- CSS RESET (мягкий) --------- */
+    *,*::before,*::after { box-sizing: border-box; }
+    html { line-height: 1.5; -webkit-text-size-adjust: 100%; }
+    body { margin: 0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, Inter, Arial, sans-serif; }
+    img, video { max-width: 100%; height: auto; display: block; }
+    button, input, select, textarea { font: inherit; }
+    a { color: inherit; text-decoration: none; }
+
+    /* --------- THEME & TOKENS --------- */
+    :root {
+      --bg: #0b1220;
+      --panel: #0f172a;
+      --text: #e5e7eb;
+      --muted: #94a3b8;
+      --brand: #7c3aed;
+      --brand-2: #22c55e;
+      --accent: #f59e0b;
+      --radius: 1.2rem;
+      --shadow: 0 0.4rem 2rem rgba(0,0,0,.25);
+
+      --container: min(120rem, 92vw);
+      --gap: 2rem;
+      --gap-lg: 3.2rem;
+      --gap-xl: 6.4rem;
+
+      --h1: 4.2rem;
+      --h2: 3rem;
+      --h3: 2.2rem;
+      --p: 1.6rem;
+      --sm: 1.4rem;
+    }
+    html { font-size: 62.5%; } /* 1rem = 10px для удобства расчётов */
+    body {
+      background: radial-gradient(120rem 80rem at 20% -10%, rgba(124,58,237,.25), transparent 50%),
+                  radial-gradient(120rem 80rem at 120% 20%, rgba(34,197,94,.18), transparent 55%),
+                  var(--bg);
+      color: var(--text);
+      font-size: var(--p);
+      letter-spacing: .01em;
+    }
+    .container { width: var(--container); margin-inline: auto; }
+
+    /* --------- ACCESSIBILITY --------- */
+    .skip-link {
+      position: absolute; inset-inline-start: 1rem; inset-block-start: 1rem;
+      background: var(--brand); color: #fff; padding: .8rem 1.2rem; border-radius: .6rem;
+      transform: translateY(-200%); transition: transform .2s ease;
+      z-index: 10000;
+    }
+    .skip-link:focus { transform: translateY(0); outline: none; }
+
+    /* --------- HEADER --------- */
+    header {
+      position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(8px);
+      background: color-mix(in oklab, var(--panel) 75%, transparent);
+      border-bottom: .1rem solid rgba(255,255,255,.08);
+    }
+    .nav {
+      display: grid; grid-template-columns: 1fr auto auto; gap: var(--gap);
+      align-items: center; padding: 1.2rem 0;
+    }
+    .brand {
+      display: inline-flex; align-items: center; gap: 1rem; font-weight: 700; font-size: 1.8rem;
+    }
+    .brand-badge {
+      width: 3rem; height: 3rem; border-radius: 50%;
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      display: grid; place-items: center; box-shadow: var(--shadow);
+    }
+    nav ul { display: flex; gap: 1.6rem; list-style: none; margin: 0; padding: 0; }
+    nav a { padding: .8rem 1.2rem; border-radius: .8rem; color: var(--text); opacity: .9; }
+    nav a:hover { background: rgba(255,255,255,.06); opacity: 1; }
+
+    .controls { display: flex; gap: 1rem; align-items: center; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 1.2rem 1.6rem; border-radius: .9rem; border: .1rem solid rgba(255,255,255,.12);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      box-shadow: var(--shadow); cursor: pointer; user-select: none;
+      transition: transform .12s ease, background .2s ease, border-color .2s ease;
+      position: relative; overflow: hidden;
+    }
+    .btn:hover { transform: translateY(-.1rem); border-color: rgba(255,255,255,.2); }
+    .btn.primary { background: linear-gradient(135deg, var(--brand), var(--brand-2)); border: none; color: #fff; }
+    .btn.ghost { background: transparent; border-color: rgba(255,255,255,.18); }
+
+    /* --------- HERO (слайдер) --------- */
+    .hero {
+      position: relative; isolation: isolate;
+      min-height: 78vh; display: grid; place-items: center; text-align: center;
+    }
+    .slides {
+      position: absolute; inset: 0; z-index: -1; border-bottom-left-radius: 3.2rem; border-bottom-right-radius: 3.2rem;
+      overflow: hidden; mask-image: linear-gradient(to bottom, rgba(0,0,0,.85), rgba(0,0,0,.4) 60%, transparent 100%);
+    }
+    .slide {
+      position: absolute; inset: 0; background-size: cover; background-position: center;
+      transform: scale(1.1); opacity: 0; transition: opacity 1s ease, transform 8s ease;
+      filter: saturate(1.05) contrast(1.05);
+    }
+    .slide.active { opacity: 1; transform: scale(1); }
+    .hero h1 { font-size: var(--h1); margin: 0 0 1.2rem; letter-spacing: .02em; }
+    .hero p { font-size: 1.8rem; color: var(--muted); margin: 0 0 2rem; }
+    .hero-cta { display: flex; gap: 1.2rem; justify-content: center; flex-wrap: wrap; }
+
+    /* --------- SECTION GENERIC --------- */
+    section { padding: var(--gap-xl) 0; }
+    .section-head { display: grid; gap: 1rem; margin-bottom: var(--gap-lg); text-align: center; }
+    .section-head h2 { font-size: var(--h2); margin: 0; }
+    .section-head p { color: var(--muted); margin: 0 auto; max-width: 70ch; }
+
+    /* --------- GRID CARDS --------- */
+    .grid {
+      display: grid; gap: var(--gap);
+      grid-template-columns: repeat(12, 1fr);
+    }
+    .card {
+      grid-column: span 12;
+      background: color-mix(in oklab, var(--panel) 88%, transparent);
+      border: .1rem solid rgba(255,255,255,.08);
+      border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow);
+      transition: transform .2s ease, border-color .2s ease, background .2s ease;
+    }
+    .card:hover { transform: translateY(-.2rem); border-color: rgba(255,255,255,.2); }
+    .card-media { aspect-ratio: 16/9; background-size: cover; background-position: center; }
+    .card-body { padding: 2rem; display: grid; gap: 1rem; }
+    .card h3 { font-size: var(--h3); margin: 0; }
+    .badge {
+      display: inline-flex; align-items: center; gap: .6rem; font-size: var(--sm);
+      background: rgba(124,58,237,.18); color: #e9d5ff; padding: .4rem .9rem; border-radius: 10rem; border: .1rem solid rgba(124,58,237,.35);
+    }
+    .price { font-weight: 700; }
+
+    /* 12-col responsive */
+    @media (min-width: 48rem) {
+      .col-6 { grid-column: span 6; }
+      .col-4 { grid-column: span 4; }
+      .col-8 { grid-column: span 8; }
+    }
+
+    /* --------- HIGHLIGHT / FEATURE --------- */
+    .feature {
+      display: grid; gap: var(--gap); align-items: center;
+      grid-template-columns: 1fr; background: linear-gradient(135deg, rgba(124,58,237,.15), rgba(34,197,94,.12));
+      border: .1rem solid rgba(255,255,255,.12); border-radius: 2rem; padding: 2.4rem; box-shadow: var(--shadow);
+    }
+    @media (min-width: 64rem) { .feature { grid-template-columns: 1.1fr .9fr; } }
+    .feature img { border-radius: 1.2rem; }
+
+    /* --------- GALLERY --------- */
+    .gallery {
+      display: grid; gap: var(--gap);
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media (min-width: 64rem) { .gallery { grid-template-columns: repeat(4, 1fr); } }
+    .gallery img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 1.2rem; border: .1rem solid rgba(255,255,255,.12); }
+
+    /* --------- CTA --------- */
+    .cta {
+      text-align: center; background:
+        radial-gradient(80rem 40rem at 30% 10%, rgba(124,58,237,.24), transparent 60%),
+        radial-gradient(80rem 40rem at 80% 30%, rgba(34,197,94,.20), transparent 60%),
+        color-mix(in oklab, var(--panel) 94%, transparent);
+      padding: 3.2rem; border-radius: 2rem; border: .1rem solid rgba(255,255,255,.1);
+      box-shadow: var(--shadow);
+    }
+
+    /* --------- FOOTER --------- */
+    footer { padding: var(--gap-xl) 0; color: var(--muted); border-top: .1rem solid rgba(255,255,255,.08); }
+    .footer-grid { display: grid; gap: var(--gap); grid-template-columns: 1fr; }
+    @media (min-width: 64rem) { .footer-grid { grid-template-columns: 1.2fr .8fr .8fr; } }
+    .footer-grid a { color: var(--text); opacity: .7; }
+    .footer-grid a:hover { opacity: 1; }
+
+    /* --------- SCROLL TOP --------- */
+    .scroll-top {
+      position: fixed; inset-inline-end: 2rem; inset-block-end: 2rem; z-index: 999;
+      display: grid; place-items: center; width: 4.4rem; height: 4.4rem; border-radius: 50%;
+      background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: #fff;
+      box-shadow: var(--shadow); border: none; cursor: pointer; opacity: 0; pointer-events: none; transition: opacity .2s ease, transform .2s ease;
+    }
+    .scroll-top.show { opacity: 1; pointer-events: auto; }
+    .scroll-top:hover { transform: translateY(-.2rem); }
+
+    /* --------- REVEAL ANIMATIONS --------- */
+    .reveal { opacity: 0; transform: translateY(1.2rem); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+
+    /* --------- LIGHT THEME --------- */
+    .light {
+      --bg: #f8fafc;
+      --panel: #ffffff;
+      --text: #0b1220;
+      --muted: #334155;
+      --shadow: 0 .4rem 2rem rgba(15,23,42,.12);
+    }
+    .light header { background: rgba(255,255,255,.7); }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main" data-i18n="a11y.skip">К основному содержанию</a>
+
+  <header>
+    <div class="container nav" role="navigation" aria-label="Главная навигация">
+      <a class="brand" href="#top" aria-label="На главную">
+        <span class="brand-badge" aria-hidden="true">🍷</span>
+        <span data-i18n="brand.title">Sea&Wine Retreat</span>
+      </a>
+
+      <nav aria-label="Секции сайта">
+        <ul>
+          <li><a href="#tours" data-i18n="nav.tours">Туры</a></li>
+          <li><a href="#guesthouse" data-i18n="nav.guesthouse">Гостевой дом</a></li>
+          <li><a href="#hiking" data-i18n="nav.hiking">Пешие прогулки</a></li>
+          <li><a href="#sea" data-i18n="nav.sea">Морские прогулки</a></li>
+          <li><a href="#beaches" data-i18n="nav.beaches">Дикие пляжи</a></li>
+          <li><a href="#contact" data-i18n="nav.contact">Контакты</a></li>
+        </ul>
+      </nav>
+
+      <div class="controls">
+        <button class="btn ghost" id="langToggle" aria-label="Переключить язык">RU</button>
+        <button class="btn ghost" id="themeToggle" aria-label="Переключить тему">☾</button>
+        <a class="btn primary" href="#contact" data-i18n="cta.book">Забронировать</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero" id="top" aria-label="Вступительный блок">
+      <div class="slides" aria-hidden="true">
+        <div class="slide active" style="background-image:url('https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?q=80&w=1920&auto=format&fit=crop');"></div>
+        <div class="slide" style="background-image:url('https://avatars.dzeninfra.ru/get-zen_doc/1583807/pub_5e1adbd09c944600ad9656d6_5e1adcad0ce57b00acf1738c/scale_1200');"></div>
+        <div class="slide" style="background-image:url('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1a/11/0b/ec/hotel-basss.jpg?w=1400&h=-1&s=1');"></div>
+        <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1471623432079-b009d30b6729?q=80&w=1920&auto=format&fit=crop');"></div>        
+      </div>
+
+      <div class="container">
+        <h1 class="reveal" data-i18n="hero.title">Вино, море и вкус жизни</h1>
+        <p class="reveal" data-i18n="hero.subtitle">Винные и гастро туры, уютный гостевой дом, походные маршруты, морские прогулки и лучшие дикие пляжи поблизости.</p>
+        <div class="hero-cta reveal">
+          <a href="#tours" class="btn primary" data-i18n="hero.cta1">Смотреть туры</a>
+          <a href="#guesthouse" class="btn" data-i18n="hero.cta2">Гостевой дом</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ТУРЫ -->
+    <section id="tours" aria-labelledby="tours-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="tours-title" class="reveal" data-i18n="tours.title">Подборка туров</h2>
+          <p class="reveal" data-i18n="tours.lead">Выберите формат отдыха: винные дегустации, авторские гастро-маршруты и прогулки с лучшими видами.</p>
+        </div>
+
+        <div class="grid">
+          <!-- ВИННЫЕ ТУРЫ -->
+          <article class="card col-4 reveal">
+            <div class="card-media" style="background-image:url('https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?q=80&w=1500&auto=format&fit=crop');"></div>
+            <div class="card-body">
+              <div class="badge">🍇 <span data-i18n="tours.wine.badge">Винный тур</span></div>
+              <h3 data-i18n="tours.wine.title">Виноградники и дегустации</h3>
+              <p data-i18n="tours.wine.text">Посещение винодельни, погреба и терруаров с сомелье. 5 позиций, сыры и локальные истории.</p>
+              <div><span class="price" data-i18n="tours.wine.price">от 5 900 ₽/чел</span></div>
+              <a href="#contact" class="btn" data-i18n="tours.btn">Забронировать</a>
+            </div>
+          </article>
+
+          <!-- ГАСТРО ТУРЫ -->
+          <article class="card col-4 reveal">
+            <div class="card-media" style="background-image:url('https://images.unsplash.com/photo-1498654896293-37aacf113fd9?q=80&w=1500&auto=format&fit=crop');"></div>
+            <div class="card-body">
+              <div class="badge">🍽️ <span data-i18n="tours.gastro.badge">Гастро</span></div>
+              <h3 data-i18n="tours.gastro.title">Авторская гастрономия</h3>
+              <p data-i18n="tours.gastro.text">Рынки, сыры, морепродукты и семейные траттории. Небанальные адреса и локальный колорит.</p>
+              <div><span class="price" data-i18n="tours.gastro.price">от 4 500 ₽/чел</span></div>
+              <a href="#contact" class="btn" data-i18n="tours.btn">Забронировать</a>
+            </div>
+          </article>
+
+          <!-- ПРОГУЛКИ -->
+          <article class="card col-4 reveal">
+            <div class="card-media" style="background-image:url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=1500&auto=format&fit=crop');"></div>
+            <div class="card-body">
+              <div class="badge">🥾 <span data-i18n="tours.hike.badge">Маршруты</span></div>
+              <h3 data-i18n="tours.hike.title">Пешие тропы с видами</h3>
+              <p data-i18n="tours.hike.text">Утренние и закатные треки по гребням и ущельям, секретные точки и панорамы.</p>
+              <div><span class="price" data-i18n="tours.hike.price">от 2 900 ₽/чел</span></div>
+              <a href="#contact" class="btn" data-i18n="tours.btn">Забронировать</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ГОСТЕВОЙ ДОМ -->
+    <section id="guesthouse" aria-labelledby="gh-title">
+      <div class="container">
+        <div class="feature reveal">
+          <div>
+            <h2 id="gh-title" data-i18n="gh.title">Гостевой дом у моря</h2>
+            <p data-i18n="gh.text">Тёплый минимализм, терраса с видом, завтраки по-домашнему. До пляжа — 7 минут пешком.</p>
+            <ul style="margin:1rem 0 2rem; padding-left: 1.6rem;">
+              <li data-i18n="gh.feat1">Wi-Fi, кондиционер, рабочее место</li>
+              <li data-i18n="gh.feat2">Парковка и трансфер</li>
+              <li data-i18n="gh.feat3">Семейные номера и кухня</li>
+            </ul>
+            <div class="hero-cta">
+              <a href="#contact" class="btn primary" data-i18n="gh.cta">Свободные даты</a>
+              <a href="#beaches" class="btn" data-i18n="gh.cta2">Пляжи рядом</a>
+            </div>
+          </div>
+          <div>
+            <img loading="lazy" src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=1500&auto=format&fit=crop"
+                 alt="Уютный номер гостевого дома у моря" width="1200" height="800">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ПЕШИЕ ПРОГУЛКИ -->
+    <section id="hiking" aria-labelledby="hike-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="hike-title" class="reveal" data-i18n="hike.title">Пешие прогулки</h2>
+          <p class="reveal" data-i18n="hike.lead">Лёгкие маршруты для всех уровней — рассветы над виноградниками и тропы вдоль моря.</p>
+        </div>
+
+        <div class="grid">
+          <article class="card col-8 reveal">
+            <div class="card-media" style="background-image:url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=1500&auto=format&fit=crop');"></div>
+            <div class="card-body">
+              <h3 data-i18n="hike.route1.title">Тропа рассветов</h3>
+              <p data-i18n="hike.route1.text">3–4 часа, набор высоты 250 м, обзорные площадки и пикник с локальными продуктами.</p>
+              <div><span class="badge">⏱ 4 ч</span> <span class="badge">↗ 250 м</span></div>
+            </div>
+          </article>
+
+          <article class="card col-4 reveal">
+            <div class="card-media" style="background-image:url('https://images.unsplash.com/photo-1487730116645-74489c95b41b?q=80&w=1200&auto=format&fit=crop');"></div>
+            <div class="card-body">
+              <h3 data-i18n="hike.route2.title">К мысу и обратно</h3>
+              <p data-i18n="hike.route2.text">Короткий закатный трек вдоль скал к маяку и скрытому пляжу.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- МОРСКИЕ ПРОГУЛКИ -->
+    <section id="sea" aria-labelledby="sea-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="sea-title" class="reveal" data-i18n="sea.title">Морские прогулки</h2>
+          <p class="reveal" data-i18n="sea.lead">Утренние выходы к бухтам, купание с борта и сноркелинг в кристальной воде.</p>
+        </div>
+
+        <div class="grid">
+          <article class="card col-6 reveal">
+            <div class="card-media" style="background-image:url('https://images.unsplash.com/photo-1500375592092-40eb2168fd21?q=80&w=1500&auto=format&fit=crop');"></div>
+            <div class="card-body">
+              <h3 data-i18n="sea.boat.title">Катер к лазурным бухтам</h3>
+              <p data-i18n="sea.boat.text">3 часа, швартовки у лучших точек, напитки на борту.</p>
+              <div><span class="price" data-i18n="sea.boat.price">от 8 900 ₽/группа</span></div>
+              <a href="#contact" class="btn" data-i18n="tours.btn">Забронировать</a>
+            </div>
+          </article>
+
+          <article class="card col-6 reveal">
+            <div class="card-media" style="background-image:url('https://static.tildacdn.com/tild3637-6562-4536-a463-343539613864/ZDsF3NSZDp4.jpg');"></div>
+            <div class="card-body">
+              <h3 data-i18n="sea.sunset.title">Закатная прогулка</h3>
+              <p data-i18n="sea.sunset.text">Час золотого света и мягкая вода — идеальные фото и настроение.</p>
+              <div><span class="price" data-i18n="sea.boad.price">от 6 200 ₽/группа</span></div>
+              <a href="#contact" class="btn" data-i18n="tours.btn">Забронировать</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ДИКИЕ ПЛЯЖИ (ГАЛЕРЕЯ) -->
+    <section id="beaches" aria-labelledby="beach-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="beach-title" class="reveal" data-i18n="beach.title">Дикие пляжи</h2>
+          <p class="reveal" data-i18n="beach.lead">Секретные бухты, мягкий песок и вода сверх прозрачности — бережём локации и делимся координатами с гостями.</p>
+        </div>
+
+        <div class="gallery reveal" aria-label="Фотогалерея пляжей">
+          <img loading="lazy" src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?q=80&w=900&auto=format&fit=crop" alt="Лазурный пляж с прозрачной водой">
+          <img loading="lazy" src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=900&auto=format&fit=crop" alt="Песчаный пляж и скалы">
+          <img loading="lazy" src="https://images.unsplash.com/photo-1493558103817-58b2924bce98?q=80&w=900&auto=format&fit=crop" alt="Дикая бухта на закате">
+          <img loading="lazy" src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?q=80&w=900&auto=format&fit=crop" alt="Берег с маяком и волнами">
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="container cta reveal" id="contact" aria-labelledby="contact-title">
+      <h2 id="contact-title" data-i18n="contact.title">Готовы спланировать отдых?</h2>
+      <p data-i18n="contact.lead">Напишите нам в мессенджер или оставьте заявку на сайте — ответим в течение дня.</p>
+      <div class="hero-cta" style="margin-top:1.2rem;">
+        <a class="btn primary" href="mailto:hello@example.com" data-i18n="contact.mail">Написать на e-mail</a>
+        <a class="btn" href="#form" data-i18n="contact.form">Оставить заявку</a>
+      </div>
+
+      <!-- Простая форма-заглушка -->
+      <form id="form" style="margin-top:2rem; display:grid; gap:1rem; max-width: 60rem; margin-inline:auto;" aria-label="Форма обратной связи">
+        <label>
+          <span data-i18n="form.name">Имя</span><br>
+          <input required name="name" placeholder="Имя" style="width:100%; padding:1.2rem 1.4rem; border-radius:.8rem; border:.1rem solid rgba(255,255,255,.2); background:rgba(255,255,255,.03); color:inherit;">
+        </label>
+        <label>
+          <span data-i18n="form.contact">Контакты (e-mail/телефон)</span><br>
+          <input required name="contact" placeholder="example@mail.com" style="width:100%; padding:1.2rem 1.4rem; border-radius:.8rem; border:.1rem solid rgba(255,255,255,.2); background:rgba(255,255,255,.03); color:inherit;">
+        </label>
+        <label>
+          <span data-i18n="form.msg">Сообщение</span><br>
+          <textarea name="message" rows="3" placeholder="Дата, формат тура, количество гостей" style="width:100%; padding:1.2rem 1.4rem; border-radius:.8rem; border:.1rem solid rgba(255,255,255,.2); background:rgba(255,255,255,.03); color:inherit;"></textarea>
+        </label>
+        <button class="btn primary" type="submit" data-i18n="form.send">Отправить</button>
+        <small style="color:var(--muted);" data-i18n="form.notice">Нажимая «Отправить», вы соглашаетесь с политикой конфиденциальности.</small>
+      </form>
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    <div class="container footer-grid">
+      <div>
+        <div class="brand"><span class="brand-badge" aria-hidden="true">🌊</span><strong>Sea&Wine Retreat</strong></div>
+        <p style="max-width:60ch; margin-top:.8rem;" data-i18n="footer.tag">Там, где вино встречает море. Частные туры и тёплый приём.</p>
+      </div>
+      <div>
+        <h3 style="font-size:var(--h3); margin-top:0;" data-i18n="footer.contact">Контакты</h3>
+        <p>+7 999 000-00-00<br>hello@example.com</p>
+        <p data-i18n="footer.addr">Набережная 1, курортный посёлок</p>
+      </div>
+      <div>
+        <h3 style="font-size:var(--h3); margin-top:0;" data-i18n="footer.links">Ссылки</h3>
+        <p><a href="#tours" data-i18n="nav.tours">Туры</a> · <a href="#guesthouse" data-i18n="nav.guesthouse">Гостевой дом</a><br>
+           <a href="#hiking" data-i18n="nav.hiking">Пешие прогулки</a> · <a href="#sea" data-i18n="nav.sea">Морские прогулки</a></p>
+      </div>
+    </div>
+    <div class="container" style="margin-top:2rem; display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap;">
+      <small>© <span id="year"></span> Sea&Wine Retreat</small>
+      <small><a href="#" style="opacity:.7" data-i18n="footer.pp">Политика конфиденциальности</a></small>
+    </div>
+  </footer>
+
+  <button class="scroll-top" id="scrollTop" aria-label="Наверх">↑</button>
+
+  <!-- JSON-LD LocalBusiness (заглушка) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"LocalBusiness",
+    "name":"Sea&Wine Retreat",
+    "url":"https://example.com",
+    "telephone":"+79990000000",
+    "address": {
+      "@type":"PostalAddress",
+      "streetAddress":"Набережная 1",
+      "addressLocality":"Курортный посёлок",
+      "addressCountry":"RU"
+    },
+    "image":"https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?q=80&w=1200&auto=format&fit=crop",
+    "description":"Винные туры, гастро туры, гостевой дом, пешие и морские прогулки, дикие пляжи."
+  }
+  </script>
+
+  <script>
+    // ===== Helpers =====
+    const $ = (s, root=document) => root.querySelector(s);
+    const $$ = (s, root=document) => [...root.querySelectorAll(s)];
+
+    // ===== Language (RU/EN) =====
+    const dict = {
+      ru: {
+        "meta.title":"Винные и гастро туры • Гостевой дом у моря",
+        "a11y.skip":"К основному содержанию",
+        "brand.title":"Sea&Wine Retreat",
+        "nav.tours":"Туры","nav.guesthouse":"Гостевой дом","nav.hiking":"Пешие прогулки","nav.sea":"Морские прогулки","nav.beaches":"Дикие пляжи","nav.contact":"Контакты",
+        "cta.book":"Забронировать",
+        "hero.title":"Вино, море и вкус жизни",
+        "hero.subtitle":"Винные и гастро туры, уютный гостевой дом, походные маршруты, морские прогулки и лучшие дикие пляжи поблизости.",
+        "hero.cta1":"Смотреть туры","hero.cta2":"Гостевой дом",
+        "tours.title":"Подборка туров",
+        "tours.lead":"Выберите формат отдыха: винные дегустации, авторские гастро-маршруты и прогулки с лучшими видами.",
+        "tours.wine.badge":"Винный тур","tours.wine.title":"Виноградники и дегустации","tours.wine.text":"Посещение винодельни, погреба и терруаров с сомелье. 5 позиций, сыры и локальные истории.","tours.wine.price":"от 5 900 ₽/чел",
+        "tours.gastro.badge":"Гастро","tours.gastro.title":"Авторская гастрономия","tours.gastro.text":"Рынки, сыры, морепродукты и семейные траттории. Небанальные адреса и локальный колорит.","tours.gastro.price":"от 4 500 ₽/чел",
+        "tours.hike.badge":"Маршруты","tours.hike.title":"Пешие тропы с видами","tours.hike.text":"Утренние и закатные треки по гребням и ущельям, секретные точки и панорамы.","tours.hike.price":"от 2 900 ₽/чел",
+        "tours.btn":"Забронировать",
+        "gh.title":"Гостевой дом у моря","gh.text":"Тёплый минимализм, терраса с видом, завтраки по-домашнему. До пляжа — 7 минут пешком.","gh.feat1":"Wi-Fi, кондиционер, рабочее место","gh.feat2":"Парковка и трансфер","gh.feat3":"Семейные номера и кухня","gh.cta":"Свободные даты","gh.cta2":"Пляжи рядом",
+        "hike.title":"Пешие прогулки","hike.lead":"Лёгкие маршруты для всех уровней — рассветы над виноградниками и тропы вдоль моря.",
+        "hike.route1.title":"Тропа рассветов","hike.route1.text":"3–4 часа, набор высоты 250 м, обзорные площадки и пикник с локальными продуктами.",
+        "hike.route2.title":"К мысу и обратно","hike.route2.text":"Короткий закатный трек вдоль скал к маяку и скрытому пляжу.",
+        "sea.title":"Морские прогулки","sea.lead":"Утренние выходы к бухтам, купание с борта и сноркелинг в кристальной воде.",
+        "sea.boat.title":"Катер к лазурным бухтам","sea.boat.text":"3 часа, швартовки у лучших точек, напитки на борту.","sea.boat.price":"от 8 900 ₽/группа",
+        "sea.boad.title":"Катер к лазурным бухтам","sea.boad.text":"3 часа, швартовки у лучших точек, напитки на борту.","sea.boad.price":"от 6 200 ₽/группа",
+        "sea.sunset.title":"Закатная прогулка","sea.sunset.text":"Час золотого света и мягкая вода — идеальные фото и настроение.",
+        "beach.title":"Дикие пляжи","beach.lead":"Секретные бухты, мягкий песок и вода сверх прозрачности — бережём локации и делимся координатами с гостями.",
+        "contact.title":"Готовы спланировать отдых?","contact.lead":"Напишите нам в мессенджер или оставьте заявку на сайте — ответим в течение дня.","contact.mail":"Написать на e-mail","contact.form":"Оставить заявку",
+        "form.name":"Имя","form.contact":"Контакты (e-mail/телефон)","form.msg":"Сообщение","form.send":"Отправить","form.notice":"Нажимая «Отправить», вы соглашаетесь с политикой конфиденциальности.",
+        "footer.tag":"Там, где вино встречает море. Частные туры и тёплый приём.",
+        "footer.contact":"Контакты","footer.addr":"Набережная 1, курортный посёлок","footer.links":"Ссылки","footer.pp":"Политика конфиденциальности"
+      },
+      en: {
+        "meta.title":"Wine & Gastro Tours • Seaside Guesthouse",
+        "a11y.skip":"Skip to content",
+        "brand.title":"Sea&Wine Retreat",
+        "nav.tours":"Tours","nav.guesthouse":"Guesthouse","nav.hiking":"Hiking","nav.sea":"Boat trips","nav.beaches":"Wild beaches","nav.contact":"Contacts",
+        "cta.book":"Book now",
+        "hero.title":"Wine, sea & the taste of life",
+        "hero.subtitle":"Wine & gastro tours, cozy seaside guesthouse, hiking routes, boat trips and the best wild beaches around.",
+        "hero.cta1":"See tours","hero.cta2":"Guesthouse",
+        "tours.title":"Featured tours",
+        "tours.lead":"Choose your vibe: wine tastings, author’s gastro routes and scenic walks.",
+        "tours.wine.badge":"Wine tour","tours.wine.title":"Vineyards & tastings","tours.wine.text":"Winery visit with a sommelier, 5 wines, cheeses and local stories.","tours.wine.price":"from 5,900 ₽/person",
+        "tours.gastro.badge":"Gastro","tours.gastro.title":"Curated gastronomy","tours.gastro.text":"Markets, cheeses, seafood and family trattorias. Hidden gems and local color.","tours.gastro.price":"from 4,500 ₽/person",
+        "tours.hike.badge":"Routes","tours.hike.title":"Scenic trails","tours.hike.text":"Sunrise & sunset treks over ridges and canyons, secret viewpoints.","tours.hike.price":"from 2,900 ₽/person",
+        "tours.btn":"Book",
+        "gh.title":"Seaside guesthouse","gh.text":"Warm minimalism, view terrace, homemade breakfasts. 7-minute walk to the beach.","gh.feat1":"Wi-Fi, A/C, workspace","gh.feat2":"Parking & transfer","gh.feat3":"Family rooms & kitchen","gh.cta":"Availability","gh.cta2":"Nearby beaches",
+        "hike.title":"Hiking","hike.lead":"Easy routes for any level — sunrise over vineyards and coastal paths.",
+        "hike.route1.title":"Sunrise trail","hike.route1.text":"3–4 hours, +250 m elevation, viewpoints and picnic with local products.",
+        "hike.route2.title":"To the cape & back","hike.route2.text":"Short sunset track along cliffs to the lighthouse and a hidden beach.",
+        "sea.title":"Boat trips","sea.lead":"Morning rides to coves, swim stops and snorkeling in crystal waters.",
+        "sea.boat.title":"Coves by boat","sea.boat.text":"3 hours, anchoring at best spots, drinks onboard.","sea.boat.price":"from 8,900 ₽/group",
+        "sea.sunset.title":"Sunset cruise","sea.sunset.text":"Golden hour on the water — perfect photos and vibes.","sea.boad.price":"from 6,200 ₽/group",
+        "beach.title":"Wild beaches","beach.lead":"Secret coves, soft sand and ultra-clear water. Locations shared with guests.",
+        "contact.title":"Ready to plan your trip?","contact.lead":"Message us or submit a request — we reply within a day.","contact.mail":"Write e-mail","contact.form":"Send a request",
+        "form.name":"Name","form.contact":"Contacts (e-mail/phone)","form.msg":"Message","form.send":"Send","form.notice":"By sending you agree to the privacy policy.",
+        "footer.tag":"Where wine meets the sea. Private tours & warm hospitality.",
+        "footer.contact":"Contacts","footer.addr":"1 Naberezhnaya St, seaside village","footer.links":"Links","footer.pp":"Privacy policy"
+      }
+    };
+
+    const i18nApply = (lang) => {
+      document.documentElement.lang = lang === 'ru' ? 'ru' : 'en';
+      $$("[data-i18n]").forEach(el => {
+        const key = el.getAttribute("data-i18n");
+        if (dict[lang][key]) {
+          if (el.tagName.toLowerCase() === "title" || el.closest("head")) {
+            document.title = dict[lang][key];
+          } else {
+            el.textContent = dict[lang][key];
+          }
+        }
+      });
+    };
+
+    const savedLang = localStorage.getItem("lang") || "ru";
+    i18nApply(savedLang);
+    $("#langToggle").textContent = savedLang.toUpperCase();
+
+    $("#langToggle").addEventListener("click", () => {
+      const next = (localStorage.getItem("lang") || "ru") === "ru" ? "en" : "ru";
+      localStorage.setItem("lang", next);
+      $("#langToggle").textContent = next.toUpperCase();
+      i18nApply(next);
+    });
+
+    // ===== Theme toggle =====
+    const setTheme = (mode) => {
+      document.body.classList.toggle("light", mode === "light");
+      localStorage.setItem("theme", mode);
+      $("#themeToggle").textContent = mode === "light" ? "☀" : "☾";
+    };
+    setTheme(localStorage.getItem("theme") || "dark");
+    $("#themeToggle").addEventListener("click", () => {
+      const mode = document.body.classList.contains("light") ? "dark" : "light";
+      setTheme(mode);
+    });
+
+    // ===== Hero slider =====
+    let slideIdx = 0;
+    const slides = $$(".slide");
+    setInterval(() => {
+      slides[slideIdx].classList.remove("active");
+      slideIdx = (slideIdx + 1) % slides.length;
+      slides[slideIdx].classList.add("active");
+    }, 6000);
+
+    // ===== Reveal on scroll =====
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add("in"); });
+    }, { threshold: 0.2 });
+    $$(".reveal, .card, .feature, .gallery").forEach(el => io.observe(el));
+
+    // ===== Scroll top =====
+    const st = $("#scrollTop");
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 600) st.classList.add("show");
+      else st.classList.remove("show");
+    });
+    st.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+
+    // ===== Ripple effect on .btn =====
+    const ripple = (e) => {
+      const btn = e.currentTarget;
+      const circle = document.createElement("span");
+      const d = Math.max(btn.clientWidth, btn.clientHeight);
+      circle.style.width = circle.style.height = d + "px";
+      const rect = btn.getBoundingClientRect();
+      circle.style.left = (e.clientX - rect.left - d/2) + "px";
+      circle.style.top = (e.clientY - rect.top - d/2) + "px";
+      circle.style.position = "absolute";
+      circle.style.background = "rgba(255,255,255,.35)";
+      circle.style.borderRadius = "50%";
+      circle.style.transform = "scale(0)";
+      circle.style.animation = "rip .6s ease-out";
+      circle.style.pointerEvents = "none";
+      btn.appendChild(circle);
+      setTimeout(() => circle.remove(), 600);
+    };
+    $$(".btn").forEach(b => b.addEventListener("click", ripple));
+    const style = document.createElement("style");
+    style.innerHTML = "@keyframes rip{to{transform:scale(2.6);opacity:0}}";
+    document.head.appendChild(style);
+
+    // ===== Form dummy submit =====
+    $("#form").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const lang = localStorage.getItem("lang") || "ru";
+      const ok = lang === "ru" ? "Заявка отправлена (демо). Мы свяжемся с вами!" : "Request sent (demo). We'll contact you!";
+      alert(ok);
+      e.target.reset();
+    });
+
+    // Year
+    $("#year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
